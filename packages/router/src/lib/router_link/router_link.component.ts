@@ -11,7 +11,6 @@ import {
 } from '@lit-kit/component';
 
 import { RouterRef, Router } from '../router';
-import { html } from 'lit-html';
 
 export type RouterLinkState = HTMLAnchorElement | null;
 
@@ -26,8 +25,7 @@ export class ActiveOptions {
 
 @Component<RouterLinkState>({
   initialState: null,
-  useShadowDom: false,
-  template: ({ state }) => html`${state}`,
+  template: (ctx) => ctx.state,
 })
 export class RouterLinkComponent implements OnPropChanges, OnConnected, OnDisconnected {
   @Prop() path: string = '';
@@ -78,8 +76,7 @@ export class RouterLinkComponent implements OnPropChanges, OnConnected, OnDiscon
 
   private setActiveClass() {
     const fragment = this.router.getFragment();
-    const className = this.activeOptions.className;
-    const pathMatch = this.activeOptions.pathMatch;
+    const { className, pathMatch } = this.activeOptions;
 
     if (pathMatch === 'full') {
       if (fragment === this.normalizedPath) {

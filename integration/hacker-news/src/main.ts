@@ -1,4 +1,9 @@
+import { bootstrapEnvironment } from '@lit-kit/component';
+import { withLitHtml } from '@lit-kit/component/lib/lit_html';
+
 import './app/app.component';
+
+bootstrapEnvironment([withLitHtml()]);
 
 if (process.env.NODE_ENV === 'production') {
   navigator.serviceWorker.register('/service-worker.js').then(

@@ -8,7 +8,6 @@ import {
   ElementInstance,
   defineElement,
 } from '@lit-kit/component';
-import { html } from 'lit-html';
 import { MatchFunction, Match } from 'path-to-regexp';
 
 import { Route, Router, RouterRef, RouteCtx } from '../router';
@@ -18,7 +17,7 @@ export type RouterOutletState = (HTMLElement & { [key: string]: any }) | null;
 @Component<RouterOutletState>({
   initialState: null,
   useShadowDom: false,
-  template: ({ state }) => html`${state}`,
+  template: (ctx) => ctx.state,
 })
 export class RouterOutletComponent implements OnConnected, OnDisconnected {
   @Prop() routes: Route[] = [];
@@ -86,6 +85,7 @@ export class RouterOutletComponent implements OnConnected, OnDisconnected {
         activeComponent = element;
       }
 
+      // Only set route context if the HTMLElement has a lit kit injector attached
       if ('componentInjector' in activeComponent) {
         const litKitComponent = activeComponent as ElementInstance<any>;
 

@@ -8,11 +8,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const plugins = [
   new CleanWebpackPlugin(),
-  new HtmlWebpackPlugin({ template: './src/index.html' }),
+  new HtmlWebpackPlugin({ template: './src/index.html', inject: 'head' }),
   new CopyPlugin([
     { from: './src/manifest.json', to: './manifest.json' },
-    { from: './src/assets', to: './assets' }
-  ])
+    { from: './src/assets', to: './assets' },
+  ]),
 ];
 
 const performance = {};
@@ -27,31 +27,31 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
-    main: './src/main.ts'
+    main: './src/main.ts',
   },
   module: {
     rules: [
       {
         test: /\.ts?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
   },
   output: {
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   optimization: {
-    minimizer: [new TerserPlugin({ terserOptions: { output: { comments: false } } })]
+    minimizer: [new TerserPlugin({ terserOptions: { output: { comments: false } } })],
   },
   plugins,
-  performance
+  performance,
 };

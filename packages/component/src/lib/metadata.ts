@@ -1,5 +1,4 @@
 import { ProviderToken, Provider } from '@lit-kit/di';
-import { TemplateResult } from 'lit-html';
 
 export const COMPONENT_METADATA_KEY = 'litKitComponentMetadata';
 export const COMPONENT_DEF_KEY = 'litKitComponentDef';
@@ -12,7 +11,7 @@ export interface TemplateCtx<T> {
   dispatch: (eventName: string, detail?: any) => () => void;
 }
 
-export type TemplateDef<T> = (ctx: TemplateCtx<T>) => TemplateResult;
+export type TemplateDef<T> = (ctx: TemplateCtx<T>) => unknown;
 
 export interface ComponentDef<T> {
   template: TemplateDef<T>;

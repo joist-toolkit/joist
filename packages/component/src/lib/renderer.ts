@@ -1,14 +1,12 @@
 import { Service } from '@lit-kit/di';
-import { render, TemplateResult, RenderOptions } from 'lit-html';
-import { ShadyRenderOptions } from 'lit-html/lib/shady-render';
 
 @Service()
-export class Renderer {
-  render(
-    templateResult: TemplateResult,
-    container: Element | DocumentFragment,
-    options: RenderOptions | ShadyRenderOptions
-  ) {
-    render(templateResult, container, options);
+export abstract class Renderer {
+  render<O>(result: any, container: Element | DocumentFragment, _options: O): void {
+    if (container.lastChild) {
+      container.removeChild(container.lastChild);
+    }
+
+    container.appendChild(result);
   }
 }

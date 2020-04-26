@@ -31,7 +31,9 @@
     "build": "../../node_modules/.bin/tsc --outDir lib --module es2015"
   },
   "peerDependencies": {
-    "@lit-kit/di": "^2.0.0",
+    "@lit-kit/di": "^2.0.0"
+  },
+  "optionalPeerDependencies": {
     "lit-html": "^1.1.2"
   },
   "devDependencies": {
