@@ -1,4 +1,4 @@
-import { InjectorBase, JoistElement, component } from '@joist/component';
+import { InjectorBase, WithDi } from '@joist/component';
 import { Provider, ProviderToken } from '@joist/di';
 
 type TestBedBase = HTMLElement & InjectorBase;
@@ -23,17 +23,15 @@ class TestBed {
   }
 }
 
-@component({
-  tagName: 'joist-test-bed',
-  isInjectorRoot: true,
-})
-class Host extends JoistElement {
+class Host extends WithDi(HTMLElement) {
   constructor() {
     super();
 
     this.injector.parent = undefined;
   }
 }
+
+customElements.define('joist-test-bed', Host);
 
 export function defineTestBed(providers: Provider<any>[] = []) {
   const host = new Host();

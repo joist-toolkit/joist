@@ -1,0 +1,27 @@
+:host {
+  align-items: center;
+  display: flex;
+  padding: 1rem;
+}
+
+.name {
+  flex-grow: 1;
+}
+
+.name.complete {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+button {
+  border: none;
+  color: cornflowerblue;
+  cursor: pointer;
+  font-size: 1rem;
+  background: none;
+  margin-left: 0.5rem;
+}
+
+.remove {
+  color: darkred;
+}

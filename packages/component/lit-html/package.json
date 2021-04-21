@@ -1,4 +1,0 @@
-{
-  "main": "../target/lit-html/main.js",
-  "module": "../target/lit-html/main.js"
-}

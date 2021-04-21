@@ -1,9 +1,7 @@
 import { Injector, service } from '@joist/di';
 import { expect } from '@open-wc/testing';
 
-import { getEnvironmentRef, clearEnvironment } from './environment';
-import { get, JoistElement } from './element';
-import { component } from './component';
+import { getEnvironmentRef, clearEnvironment, WithDi, get } from './environment';
 
 describe('environment', () => {
   afterEach(clearEnvironment);
@@ -16,12 +14,12 @@ describe('environment', () => {
     @service()
     class MyService {}
 
-    @component({
-      tagName: 'environment-1',
-    })
-    class MyElement extends JoistElement {
-      @get(MyService) myService!: MyService;
+    class MyElement extends WithDi(HTMLElement) {
+      @get(MyService)
+      myService!: MyService;
     }
+
+    customElements.define('environment-test-1', MyElement);
 
     const el = new MyElement();
 

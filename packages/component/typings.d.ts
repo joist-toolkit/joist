@@ -10,3 +10,7 @@ declare interface Document {
 declare interface ShadowRoot {
   adoptedStyleSheets: readonly CSSStyleSheet[];
 }
+
+interface HTMLElement {
+  connectedCallback(): void;
+}
