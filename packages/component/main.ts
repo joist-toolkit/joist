@@ -1,1 +1,2 @@
-export * from './lib/environment';
+export * from './lib/environment.js';
+export * from './lib/di.js';

@@ -1,4 +1,4 @@
-import { InjectorBase, WithDi } from '@joist/component';
+import { InjectorBase, JoistDi } from '@joist/component';
 import { Provider, ProviderToken } from '@joist/di';
 
 type TestBedBase = HTMLElement & InjectorBase;
@@ -23,7 +23,7 @@ class TestBed {
   }
 }
 
-class Host extends WithDi(HTMLElement) {
+class Host extends JoistDi(HTMLElement) {
   constructor() {
     super();
 

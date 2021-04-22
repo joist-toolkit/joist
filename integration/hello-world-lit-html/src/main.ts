@@ -1,17 +1,17 @@
-import { component, JoistElement } from '@joist/component';
-import { template, html } from '@joist/component/lit-html';
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators';
+
+import { JoistDi } from '@joist/component';
 
 export interface AppState {
   title: string;
 }
 
-@component<AppState>({
-  tagName: 'app-root',
-  state: {
-    title: 'Hello World',
-  },
-  render: template(({ state }) => {
-    return html`<h1>${state.title}</h1>`;
-  }),
-})
-export class AppElement extends JoistElement {}
+@customElement('app-root')
+export class AppElement extends JoistDi(LitElement) {
+  title = 'Hello World';
+
+  render() {
+    return html`<h1>${this.title}</h1>`;
+  }
+}

@@ -1,7 +1,8 @@
 import { Injector, service } from '@joist/di';
 import { expect } from '@open-wc/testing';
 
-import { getEnvironmentRef, clearEnvironment, WithDi, get } from './environment';
+import { JoistDi, get } from './di';
+import { getEnvironmentRef, clearEnvironment } from './environment';
 
 describe('environment', () => {
   afterEach(clearEnvironment);
@@ -14,7 +15,7 @@ describe('environment', () => {
     @service()
     class MyService {}
 
-    class MyElement extends WithDi(HTMLElement) {
+    class MyElement extends JoistDi(HTMLElement) {
       @get(MyService)
       myService!: MyService;
     }

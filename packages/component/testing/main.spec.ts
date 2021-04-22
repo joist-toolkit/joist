@@ -1,11 +1,11 @@
-import { WithDi } from '@joist/component';
+import { JoistDi } from '@joist/component';
 import { expect } from '@open-wc/testing';
 
 import { defineTestBed } from './main';
 
 describe('testing', () => {
   it('should create a new instance of a custom element with the correct injector root', () => {
-    class Foo extends WithDi(HTMLElement) {}
+    class Foo extends JoistDi(HTMLElement) {}
 
     customElements.define('testing-0', Foo);
 

@@ -13,4 +13,5 @@ declare interface ShadowRoot {
 
 interface HTMLElement {
   connectedCallback(): void;
+  disconnectedCallback(): void;
 }
