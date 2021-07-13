@@ -37,7 +37,7 @@
     "bundlesize": "0.18.1",
     "husky": "7.0.1",
     "lerna": "3.22.1",
-    "lint-staged": "11.0.0",
+    "lint-staged": "11.0.1",
     "lit-html": "1.4.1",
     "path-to-regexp": "6.2.0",
     "prettier": "2.3.2",
